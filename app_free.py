@@ -1,6 +1,8 @@
 """Free public demonstration, backed only by a disposable local SQLite cache."""
 
+import logging
 import os
+from datetime import datetime
 import runpy
 from pathlib import Path
 import streamlit as st
@@ -18,10 +20,17 @@ try:
     ):
         state = ensure_data()
 except Exception:
+    logging.getLogger(__name__).exception("Free demo data preparation failed")
     st.error(
         "Impossible de préparer les données. Réessayez plus tard ; aucune valeur fictive ne sera affichée."
     )
     st.stop()
+last_attempt = datetime.fromisoformat(state["last_attempt_at"]).strftime("%d/%m/%Y à %H:%M UTC")
+next_eligible = datetime.fromisoformat(state["next_eligible_at"]).strftime("%d/%m/%Y à %H:%M UTC")
+st.caption(
+    f"Dernière tentative : {last_attempt}. Une nouvelle collecte pourra être déclenchée "
+    f"par une visite à partir du {next_eligible}. Cet horaire ne garantit pas une exécution."
+)
 os.environ["DATABASE_URL"] = state["url"]
 if state["refreshed"]:
     st.cache_data.clear()

@@ -48,3 +48,13 @@ def test_free_app_has_no_exception(tmp_path, monkeypatch):
     ).run(timeout=30)
     assert not app.exception
     assert any("Version gratuite" in x.value for x in app.info)
+    assert any("ne garantit pas une exécution" in x.value for x in app.caption)
+
+
+def test_refresh_eligibility_tracks_status(tmp_path):
+    success = ensure_data(tmp_path / "ok", connector=Fake())
+    failure = ensure_data(tmp_path / "error", connector=Fake(fail=True))
+    for state, hours in [(success, 24), (failure, 1)]:
+        start = datetime.fromisoformat(state["last_attempt_at"])
+        end = datetime.fromisoformat(state["next_eligible_at"])
+        assert end - start == timedelta(hours=hours)
