@@ -11,7 +11,7 @@ MVP de collecte économique auditable pour l’Afrique. Code MIT, données soumi
 - Streamlit : filtres, comparaison sur la même année, séries, couverture, provenance, exécutions, exports et analyses séparant faits / interprétations / hypothèses / recommandations.
 - Prévisions naïves ou à dérive, sélection chronologique puis test final hors échantillon ; pas d’imputation, pas de mélange avec les observations.
 
-**Limites de livraison :** PostgreSQL et Docker ne pouvaient pas tourner dans l’environnement de construction. Les tests locaux utilisent SQLite pour valider la logique ; un test PostgreSQL dédié est fourni pour CI/Docker, mais son succès n’est pas présumé. Voir [rapport de validation](docs/VALIDATION.md). Les six autres institutions sont une feuille de route documentée, pas des connecteurs opérationnels.
+**Validation :** [GitHub Actions](https://github.com/abdoulbi/openbil/actions/runs/41438559628) a exécuté **38 tests avec succès**, dont le test d’intégration PostgreSQL 16. Le déploiement Docker complet reste à vérifier chez l’hébergeur. Voir le [rapport de validation](docs/VALIDATION.md). Les six autres institutions sont une feuille de route documentée, pas des connecteurs opérationnels.
 
 ## Démarrage recommandé avec PostgreSQL
 

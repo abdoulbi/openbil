@@ -1,5 +1,17 @@
 # Rapport de validation — 2 novembre 2026
 
+## Mise à jour après publication GitHub
+
+Le dépôt public https://github.com/abdoulbi/openbil a été publié avec autorisation. La CI du commit `64720d4967e5548e9c9499356a577748c83d1a75` est **réussie : 38 tests, aucun ignoré**, avec service PostgreSQL 16. Le test `test_postgres_migration_collect_and_lock` a donc été exécuté : migrations répétées, collecte, idempotence et verrou concurrent validés.
+
+Exécution : https://github.com/abdoulbi/openbil/actions/runs/41438559628 ; job `125254386856`. Résultat final pytest : `38 passed in 2.89s`. L’application complète chez l’hébergeur et le cycle réel de collecte sous PostgreSQL de production restent à vérifier. Les limitations « PostgreSQL non exécuté » ci-dessous décrivent uniquement la première livraison locale, avant cette CI.
+
+Le code inclut désormais la normalisation des URI PostgreSQL des hébergeurs et un démarrage avec port configurable et attente bornée de la base. Les snapshots privés restent exclus du dépôt.
+
+---
+
+# Rapport initial de construction locale
+
 ## Résultat et périmètre réellement testé
 
 MVP Banque mondiale testé avec des appels Internet réels et une base locale **SQLite**. Le code cible PostgreSQL et fournit son schéma, ses migrations, son verrouillage et un test CI dédié. **PostgreSQL et Docker n’ont pas été exécutés dans cet environnement.** Ne pas assimiler la compilation du SQL ou la validation YAML à un test d’exploitation PostgreSQL/Compose.
