@@ -21,3 +21,15 @@ Le déploiement effectif nécessite une connexion au compte d’hébergement et 
 Références officielles consultées le 2 novembre 2026 :
 - https://railway.com/guides/docker-compose
 - https://docs.railway.com/databases/postgresql
+
+## Alternative Render
+
+À la suite du blocage d’inscription Railway signalé par le propriétaire, le fichier `render.yaml` prépare une alternative complète : service web Streamlit, worker de collecte et PostgreSQL 16. Le runtime Python natif évite de dépendre des permissions d’un volume Docker ; les fichiers bruts et le catalogue résident sur le disque du worker, monté à `/opt/render/project/src/data`. La connexion PostgreSQL est injectée par Render et l’accès externe à la base est désactivé (`ipAllowList: []`).
+
+**Statut : configuration préparée, pas de déploiement réalisé.** Il faut connecter le compte Render et examiner son estimation avant d’appliquer le Blueprint : les deux services `starter`, le stockage persistant et la base `basic-256mb` sont payants. Aucune ressource payante n’a été créée. Ces noms de plans historiques restent documentés par Render ; vérifier les équivalents et tarifs présentés à l’activation.
+
+La base gratuite Render expire après 30 jours et ne convient pas à une base autonome durable. Ne pas remplacer la configuration persistante par un disque éphémère sans accepter la perte des archives à chaque redéploiement.
+
+Après activation : attendre le succès de la première collecte, vérifier les alertes du dashboard, l’accès HTTPS et les sauvegardes. La validation YAML locale ne vaut pas validation serveur Render ni test de déploiement.
+
+Références : https://render.com/docs/blueprint-spec ; https://render.com/docs/disks ; https://render.com/docs/free ; https://render.com/docs/compute-plans (consultées le 2 novembre 2026).
