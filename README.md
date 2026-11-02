@@ -13,6 +13,10 @@ MVP de collecte économique auditable pour l’Afrique. Code MIT, données soumi
 
 **Validation :** [GitHub Actions](https://github.com/abdoulbi/openbil/actions/runs/41438559628) a exécuté **38 tests avec succès**, dont le test d’intégration PostgreSQL 16. Le déploiement Docker complet reste à vérifier chez l’hébergeur. Voir le [rapport de validation](docs/VALIDATION.md). Les six autres institutions sont une feuille de route documentée, pas des connecteurs opérationnels.
 
+## Hébergement gratuit
+
+`render.yaml` déploie un unique service Render gratuit exécutant `app_free.py`. Les données réelles sont récupérées à la première visite puis actualisées lors des visites, au plus une fois par jour. Le cache SQLite et les archives locales sont temporaires ; le service peut se mettre en veille. Aucun service payant n’est déclaré. Voir [les limites du mode gratuit](docs/DEPLOYMENT.md#mode-gratuit-retenu).
+
 ## Démarrage recommandé avec PostgreSQL
 
 Prérequis : Docker Engine/Desktop avec Compose v2. Depuis ce dossier :

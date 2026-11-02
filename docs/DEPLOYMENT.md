@@ -33,3 +33,13 @@ La base gratuite Render expire après 30 jours et ne convient pas à une base au
 Après activation : attendre le succès de la première collecte, vérifier les alertes du dashboard, l’accès HTTPS et les sauvegardes. La validation YAML locale ne vaut pas validation serveur Render ni test de déploiement.
 
 Références : https://render.com/docs/blueprint-spec ; https://render.com/docs/disks ; https://render.com/docs/free ; https://render.com/docs/compute-plans (consultées le 2 novembre 2026).
+
+## Mode gratuit retenu
+
+Le propriétaire a choisi l’hébergement gratuit. `render.yaml` remplace désormais le Blueprint payant par **un seul service web `plan: free`** ; il ne déclare aucune base Render, aucun disque ni worker payants. Lancer `app_free.py`, qui conserve l’interface et les modèles du projet.
+
+Le cache SQLite et les réponses brutes sont temporaires. La première visite reconstruit la base depuis WDI ; les visites suivantes relancent la collecte si la dernière réussite a plus de 24 heures. Les échecs sont retentés au plus une fois par heure. Un verrou local sérialise les collectes au sein de l’instance. Le service gratuit se met en veille sans visiteurs : ce mode ne garantit ni actualisation quotidienne sans visite, ni historique de révisions durable. Les exports restent disponibles avant une éventuelle perte du cache.
+
+PostgreSQL, ses migrations et le collecteur permanent restent disponibles avec Docker Compose pour une installation autonome. Le code OpenBIL, Streamlit et SQLite sont open source ; Render est le fournisseur d’hébergement et n’est pas présenté comme un logiciel open source.
+
+Aucune carte, souscription payante ni base PostgreSQL temporaire de 30 jours n’est requise par cette configuration. Si Render exige malgré tout une vérification de compte pour le service gratuit, ne pas passer à un plan payant automatiquement.
