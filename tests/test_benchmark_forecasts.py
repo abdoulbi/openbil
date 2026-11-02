@@ -1,7 +1,12 @@
 import numpy as np
 import pandas as pd
 
-from scripts.benchmark_forecasts import old_forecast, compare
+from pathlib import Path
+import runpy
+
+benchmark = runpy.run_path(str(Path(__file__).resolve().parents[1] / 'scripts' / 'benchmark_forecasts.py'))
+old_forecast = benchmark['old_forecast']
+compare = benchmark['compare']
 from openbil.forecast import forecast
 
 
