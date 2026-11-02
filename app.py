@@ -175,7 +175,7 @@ with tabs[1]:
     h = st.slider("Horizon (années)", 1, 5, 3)
     history = base[base.country_id == country]
     st.info(
-        "Naïf / dérive : sélection sur 4 origines, puis test final de 3 années hors échantillon. Série annuelle contiguë, sans imputation. Le filtre de période délimite l’historique."
+        "Sélection automatique par pays et indicateur : naïf, dérive, moyenne des 3 dernières années et tendance linéaire sur 5 ans. Validation sur 4 origines, puis test final indépendant sur 3 années. Le test final n’intervient jamais dans la sélection. Série annuelle contiguë, sans imputation."
     )
     try:
         f = forecast(history, h)
@@ -186,8 +186,12 @@ with tabs[1]:
                 "MAE_test": f["test_mae"],
                 "RMSE_test": f["test_rmse"],
                 "MAE_naïf_test": f["naive_test_mae"],
+                "statut_évaluation": f["evaluation_status"],
+                "sélection": f["selection_method"],
             }
         )
+        st.caption("Comparaison des quatre modèles sur validation chronologique (MAE, plus petit = meilleur).")
+        st.dataframe(pd.DataFrame([{"modèle": k, "MAE_validation": v, "sélectionné": k == f["model"]} for k, v in f["validation_mae"].items()]), hide_index=True)
         st.dataframe(f["test"], hide_index=True)
         st.line_chart(f["future"].set_index("period")["value"])
         st.dataframe(f["future"], hide_index=True)
@@ -209,6 +213,8 @@ with tabs[1]:
             training_end=f["training_end"],
             test_mae=f["test_mae"],
             source_versions=json.dumps(history.version_id.unique().tolist()),
+            evaluation_status=f["evaluation_status"],
+            selection_method=f["selection_method"],
         )
         st.download_button(
             "Exporter les prévisions séparées",
