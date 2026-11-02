@@ -53,3 +53,29 @@ def test_projected_excluded():
 def test_duplicates_rejected():
     with pytest.raises(ValueError, match="exactly one"):
         forecast(pd.concat([frame(), frame()]))
+
+
+def test_models_and_validation_result():
+    from openbil.forecast import CANDIDATES
+    r = forecast(frame())
+    assert set(r["validation_mae"]) == set(CANDIDATES)
+    assert r["selection_method"] == "rolling_origin_one_step_mae"
+    assert r["evaluation_status"] == "not_below_naive_on_holdout"
+
+
+def test_trend_and_mean_predict():
+    from openbil.forecast import predict
+    assert predict([1, 3, 5, 7, 9], 2, "trend5") == pytest.approx([11, 13])
+    assert predict([1, 2, 3, 6], 2, "mean3") == pytest.approx([11 / 3, 11 / 3])
+
+
+def test_per_series_selects_different_models():
+    assert forecast(frame())["model"] != forecast(frame(np.ones(20)))["model"]
+
+
+def test_holdout_warning_does_not_change_selection():
+    y = np.arange(20, dtype=float)
+    y[-3:] = 0
+    r = forecast(frame(y))
+    assert r["model"] == "drift"
+    assert r["evaluation_status"] == "below_naive_on_holdout"
