@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "Cite this software separately from the World Bank and original data providers."
+title: "Open Business Intelligence Lab (OpenBIL)"
+version: 0.2.0
+date-released: 2026-11-02
+type: software
+license: MIT
+authors:
+  - name: "OpenBIL contributors"

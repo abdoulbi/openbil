@@ -1,0 +1,99 @@
+{
+  "raw_files_verified": 35,
+  "versions_verified": 12,
+  "rows_verified": 12408,
+  "errors": [],
+  "coverage": [
+    {
+      "indicator_id": "BX.KLT.DINV.WD.GD.ZS",
+      "cells": 1122,
+      "nonmissing": 928,
+      "warnings": 10,
+      "rejected": 0
+    },
+    {
+      "indicator_id": "FP.CPI.TOTL.ZG",
+      "cells": 1122,
+      "nonmissing": 820,
+      "warnings": 15,
+      "rejected": 0
+    },
+    {
+      "indicator_id": "NE.EXP.GNFS.ZS",
+      "cells": 1122,
+      "nonmissing": 911,
+      "warnings": 0,
+      "rejected": 0
+    },
+    {
+      "indicator_id": "NE.IMP.GNFS.ZS",
+      "cells": 1122,
+      "nonmissing": 911,
+      "warnings": 0,
+      "rejected": 0
+    },
+    {
+      "indicator_id": "NV.AGR.TOTL.ZS",
+      "cells": 1122,
+      "nonmissing": 984,
+      "warnings": 0,
+      "rejected": 0
+    },
+    {
+      "indicator_id": "NV.IND.TOTL.ZS",
+      "cells": 1122,
+      "nonmissing": 979,
+      "warnings": 0,
+      "rejected": 0
+    },
+    {
+      "indicator_id": "NV.SRV.TOTL.ZS",
+      "cells": 1122,
+      "nonmissing": 894,
+      "warnings": 1,
+      "rejected": 0
+    },
+    {
+      "indicator_id": "NY.GDP.MKTP.CD",
+      "cells": 1122,
+      "nonmissing": 1068,
+      "warnings": 0,
+      "rejected": 0
+    },
+    {
+      "indicator_id": "NY.GDP.MKTP.KD.ZG",
+      "cells": 1122,
+      "nonmissing": 1051,
+      "warnings": 12,
+      "rejected": 0
+    },
+    {
+      "indicator_id": "SL.EMP.TOTL.SP.ZS",
+      "cells": 1122,
+      "nonmissing": 595,
+      "warnings": 0,
+      "rejected": 0
+    },
+    {
+      "indicator_id": "SL.UEM.TOTL.ZS",
+      "cells": 1122,
+      "nonmissing": 595,
+      "warnings": 0,
+      "rejected": 0
+    }
+  ],
+  "statuses": [
+    {
+      "data_status": "estimated",
+      "cells": 1190
+    },
+    {
+      "data_status": "missing",
+      "cells": 2606
+    },
+    {
+      "data_status": "unspecified",
+      "cells": 8546
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+[
+  {
+    "source": "worldbank",
+    "kind": "api",
+    "url": "https://api.worldbank.org/v2/country/BFA/indicator/NY.GDP.MKTP.CD?format=json&per_page=1",
+    "checked_at": "2026-11-02T11:23:12.354079+00:00",
+    "status": 200,
+    "content_type": "application/json;charset=utf-8",
+    "sample_bytes": 303,
+    "final_url": "https://api.worldbank.org/v2/country/BFA/indicator/NY.GDP.MKTP.CD?format=json&per_page=1",
+    "seconds": 3.5
+  },
+  {
+    "source": "imf",
+    "kind": "documentation",
+    "url": "https://data.imf.org/en/Resource-Pages/IMF-API",
+    "checked_at": "2026-11-02T11:23:12.354874+00:00",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "sample_bytes": 4096,
+    "final_url": "https://data.imf.org/en/Resource-Pages/IMF-API",
+    "seconds": 3.9
+  },
+  {
+    "source": "afdb",
+    "kind": "documentation",
+    "url": "https://www.afdb.org/en/knowledge/statistics",
+    "checked_at": "2026-11-02T11:23:12.355432+00:00",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "sample_bytes": 4096,
+    "final_url": "https://www.afdb.org/en/knowledge/statistics",
+    "seconds": 6.61
+  },
+  {
+    "source": "unctad",
+    "kind": "portal",
+    "url": "https://unctadstat.unctad.org/datacentre/",
+    "checked_at": "2026-11-02T11:23:15.850270+00:00",
+    "status": 200,
+    "content_type": "text/html",
+    "sample_bytes": 4096,
+    "final_url": "https://unctadstat.unctad.org/datacentre/",
+    "seconds": 5.4
+  },
+  {
+    "source": "comtrade",
+    "kind": "api_releases",
+    "url": "https://comtradeapi.un.org/public/v1/getComtradeReleases",
+    "checked_at": "2026-11-02T11:23:16.253849+00:00",
+    "status": 200,
+    "content_type": null,
+    "sample_bytes": 4096,
+    "final_url": "https://comtradeapi.un.org/public/v1/getComtradeReleases",
+    "seconds": 7.33
+  },
+  {
+    "source": "faostat",
+    "kind": "portal",
+    "url": "https://www.fao.org/faostat/",
+    "checked_at": "2026-11-02T11:23:18.960887+00:00",
+    "status": 200,
+    "content_type": "text/html",
+    "sample_bytes": 2639,
+    "final_url": "https://www.fao.org/faostat/",
+    "seconds": 5.8
+  },
+  {
+    "source": "ilostat",
+    "kind": "documentation",
+    "url": "https://ilostat.ilo.org/data/bulk/",
+    "checked_at": "2026-11-02T11:23:21.250390+00:00",
+    "status": 200,
+    "content_type": "text/html; charset=UTF-8",
+    "sample_bytes": 4096,
+    "final_url": "https://ilostat.ilo.org/data/bulk/",
+    "seconds": 4.94
+  }
+]
